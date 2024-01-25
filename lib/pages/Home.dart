@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:interview/helpers/Colors.dart';
+import 'package:interview/widgets/FilterTabs.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -72,6 +73,22 @@ class Home extends StatelessWidget {
                     ],
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 20.0, vertical: 10),
+                  child: Row(
+                    children: [
+                      FilterTab(
+                          title: "Recently", callback: () {}, isActive: true),
+                      FilterTab(
+                          title: "Today", callback: () {}, isActive: false),
+                      FilterTab(
+                          title: "Upcoming", callback: () {}, isActive: false),
+                      FilterTab(
+                          title: "Later", callback: () {}, isActive: false),
+                    ],
+                  ),
+                )
               ],
             ),
           ),
