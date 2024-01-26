@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:interview/helpers/Colors.dart';
+import 'package:interview/pages/CustomModal.dart';
 import 'package:interview/pages/Recents.dart';
 import 'package:interview/widgets/CustomAppBar.dart';
 import 'package:interview/widgets/FilterTabs.dart';
@@ -21,13 +22,23 @@ class Home extends StatelessWidget {
             children: [
               const Icon(Icons.home_outlined),
               const Icon(Icons.calendar_month),
-              CircleAvatar(
-                radius: 30,
-                backgroundColor: AppColors().primaryColor,
-                child: const Icon(
-                  Icons.add,
-                  size: 40,
-                  color: Colors.white,
+              InkWell(
+                onTap: () {
+                  showModalBottomSheet(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return MyBottomSheetContent();
+                    },
+                  );
+                },
+                child: CircleAvatar(
+                  radius: 30,
+                  backgroundColor: AppColors().primaryColor,
+                  child: const Icon(
+                    Icons.add,
+                    size: 40,
+                    color: Colors.white,
+                  ),
                 ),
               ),
               const Icon(Icons.description_outlined),
