@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:interview/helpers/Colors.dart';
+import 'package:interview/helpers/Functions.dart';
 
 class MyBottomSheetContent extends StatefulWidget {
   const MyBottomSheetContent({super.key});
@@ -213,10 +214,5 @@ class _MyBottomSheetContentState extends State<MyBottomSheetContent> {
         ),
       ),
     );
-  }
-
-  String getDayAbbreviation(int weekday) {
-    List<String> days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-    return days[(weekday - 1) % 7]; // Adjusting for the zero-based index
   }
 }

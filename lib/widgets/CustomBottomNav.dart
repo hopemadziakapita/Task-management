@@ -13,7 +13,10 @@ class CustomNav extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            const Icon(Icons.home_outlined),
+            Icon(
+              Icons.home_outlined,
+              color: AppColors().primaryColor,
+            ),
             const Icon(Icons.calendar_month),
             InkWell(
               onTap: () {

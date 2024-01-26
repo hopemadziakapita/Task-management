@@ -20,15 +20,18 @@ class _FilterTabState extends State<FilterTab> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Text(
-        widget.title,
-        style: widget.isActive
-            ? TextStyle(
-                color: AppColors().primaryColor, fontWeight: FontWeight.w400)
-            : const TextStyle(
-                fontWeight: FontWeight.w400,
-                color: Colors.black12,
-                fontSize: 12),
+      child: GestureDetector(
+        onTap: widget.callback,
+        child: Text(
+          widget.title,
+          style: widget.isActive
+              ? TextStyle(
+                  color: AppColors().primaryColor, fontWeight: FontWeight.w400)
+              : const TextStyle(
+                  fontWeight: FontWeight.w400,
+                  color: Colors.black12,
+                  fontSize: 12),
+        ),
       ),
     );
   }
