@@ -9,4 +9,5 @@ class AppColors {
     255,
     255,
   );
+  Color secondaryColor = const Color.fromARGB(28, 2, 48, 173);
 }
