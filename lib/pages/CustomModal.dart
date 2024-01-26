@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:interview/helpers/Colors.dart';
 
-class MyBottomSheetContent extends StatelessWidget {
+class MyBottomSheetContent extends StatefulWidget {
   const MyBottomSheetContent({super.key});
 
+  @override
+  State<MyBottomSheetContent> createState() => _MyBottomSheetContentState();
+}
+
+class _MyBottomSheetContentState extends State<MyBottomSheetContent> {
+  String month = "August";
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -52,21 +58,39 @@ class MyBottomSheetContent extends StatelessWidget {
             ),
             Column(
               children: [
-                const Row(
+                Row(
                   children: [
                     Expanded(
                       child: Text("Start date"),
                     ),
                     Expanded(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Text(
-                            "August",
-                            style: TextStyle(fontWeight: FontWeight.w600),
-                          ),
-                          Icon(Icons.expand_more)
-                        ],
+                      child: DropdownButton<String>(
+                        underline: Container(),
+                        value: month, // Initial selected value
+                        items: <String>[
+                          'January',
+                          'February',
+                          'March',
+                          'April',
+                          'May',
+                          'June',
+                          'July',
+                          'August',
+                          'September',
+                          'October',
+                          'November',
+                          'December'
+                        ].map((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            month = newValue!;
+                          });
+                        },
                       ),
                     ),
                   ],
@@ -77,13 +101,128 @@ class MyBottomSheetContent extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(10.0),
+                        padding: const EdgeInsets.all(5),
                         child: Container(
                           width: 40,
-                          decoration:
-                              BoxDecoration(color: AppColors().primaryColor),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: const Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("Mon"),
+                              Text("10"),
+                            ],
+                          ),
                         ),
-                      )
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(5),
+                        child: Container(
+                          width: 40,
+                          decoration: BoxDecoration(
+                            color: AppColors().primaryColor,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: const Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Tue",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              Text(
+                                "10",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(5),
+                        child: Container(
+                          width: 40,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: const Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Wed",
+                              ),
+                              Text(
+                                "10",
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(5),
+                        child: Container(
+                          width: 40,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: const Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("Thu"),
+                              Text("10"),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(5),
+                        child: Container(
+                          width: 40,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: const Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("Fri"),
+                              Text("10"),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(5),
+                        child: Container(
+                          width: 40,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: const Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("Sat"),
+                              Text("10"),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(5),
+                        child: Container(
+                          width: 40,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: const Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("Sun"),
+                              Text("10"),
+                            ],
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 )
