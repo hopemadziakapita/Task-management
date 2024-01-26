@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:interview/helpers/Colors.dart';
 import 'package:interview/pages/CustomModal.dart';
+import 'package:interview/pages/DateTasks.dart';
 import 'package:interview/pages/Recents.dart';
 import 'package:interview/widgets/CustomAppBar.dart';
+import 'package:interview/widgets/CustomBottomNav.dart';
 import 'package:interview/widgets/FilterTabs.dart';
 
 class Home extends StatelessWidget {
@@ -14,39 +16,7 @@ class Home extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors().bgColor,
       appBar: const CustomAppBar(leadingIcon: Icons.segment),
-      bottomNavigationBar: SizedBox(
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              const Icon(Icons.home_outlined),
-              const Icon(Icons.calendar_month),
-              InkWell(
-                onTap: () {
-                  showModalBottomSheet(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return MyBottomSheetContent();
-                    },
-                  );
-                },
-                child: CircleAvatar(
-                  radius: 30,
-                  backgroundColor: AppColors().primaryColor,
-                  child: const Icon(
-                    Icons.add,
-                    size: 40,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              const Icon(Icons.description_outlined),
-              const Icon(Icons.person_2_outlined)
-            ],
-          ),
-        ),
-      ),
+      bottomNavigationBar: CustomNav(),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: .0),
@@ -122,7 +92,14 @@ class Home extends StatelessWidget {
                         FilterTab(
                             title: "Recently", callback: () {}, isActive: true),
                         FilterTab(
-                            title: "Today", callback: () {}, isActive: false),
+                            title: "Today",
+                            callback: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => DateTasks()));
+                            },
+                            isActive: false),
                         FilterTab(
                             title: "Upcoming",
                             callback: () {},
