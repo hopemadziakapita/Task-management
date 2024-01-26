@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:interview/widgets/RecentElement.dart';
+import 'package:interview/widgets/RecentItem.dart';
 
 class Recents extends StatelessWidget {
   const Recents({super.key});
@@ -26,6 +27,28 @@ class Recents extends StatelessWidget {
                 RecentElement(
                   title: "User Interface Design",
                   prog: 0.8,
+                ),
+              ],
+            ),
+          ),
+          const Expanded(
+            child: Column(
+              children: [
+                RecentItem(
+                  title: "Wedding",
+                  date: "20 Aug 2022",
+                ),
+                RecentItem(
+                  title: "Wedding",
+                  date: "20 Aug 2022",
+                ),
+                RecentItem(
+                  title: "Wedding",
+                  date: "20 Aug 2022",
+                ),
+                RecentItem(
+                  title: "Wedding",
+                  date: "20 Aug 2022",
                 ),
               ],
             ),
