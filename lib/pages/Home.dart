@@ -133,14 +133,7 @@ class Home extends StatelessWidget {
                     ),
                   ),
                   Expanded(
-                    child: PageView(
-                      scrollDirection: Axis.horizontal,
-                      controller: PageController(initialPage: index),
-                      onPageChanged: (value) {
-                        index = value;
-                      },
-                      children: [Recents(), Text("data")],
-                    ),
+                    child: Recents(),
                   )
                 ],
               ),
