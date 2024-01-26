@@ -14,11 +14,19 @@ class Recents extends StatelessWidget {
             height: MediaQuery.of(context).size.height * .25,
             child: ListView(
               scrollDirection: Axis.horizontal,
-              children: [
+              children: const [
                 RecentElement(
                   title: "User Interface Design",
                   prog: 0.5,
-                )
+                ),
+                RecentElement(
+                  title: "Elements",
+                  prog: 0,
+                ),
+                RecentElement(
+                  title: "User Interface Design",
+                  prog: 0.8,
+                ),
               ],
             ),
           )
