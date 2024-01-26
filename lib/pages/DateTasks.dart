@@ -3,7 +3,8 @@ import 'package:interview/helpers/Colors.dart';
 import 'package:interview/helpers/Functions.dart';
 import 'package:interview/widgets/CustomAppBar.dart';
 import 'package:interview/widgets/CustomBottomNav.dart';
-import 'package:timelines/timelines.dart';
+import 'package:interview/widgets/my_timeline.dart';
+import 'package:timeline_tile/timeline_tile.dart';
 
 class DateTasks extends StatelessWidget {
   const DateTasks({super.key});
@@ -93,6 +94,54 @@ class DateTasks extends StatelessWidget {
                       ),
                     ),
                   ),
+                  Expanded(
+                    child: ListView(
+                      children: [
+                        MyTimeLineTile(
+                          isFirst: true,
+                          isLast: false,
+                          isActive: true,
+                          title: 'Design Meeting',
+                          description: 'High fidelity prototypes for client X',
+                        ),
+                        MyTimeLineTile(
+                          isFirst: false,
+                          isLast: false,
+                          isActive: false,
+                          title: 'Fifa',
+                          description: 'Catching up with the gaaang',
+                        ),
+                        MyTimeLineTile(
+                          isFirst: false,
+                          isLast: false,
+                          isActive: false,
+                          title: 'Scrum meeting',
+                          description: 'Change reviews with dev team',
+                        ),
+                        MyTimeLineTile(
+                          isFirst: false,
+                          isLast: false,
+                          isActive: false,
+                          title: 'Design Review',
+                          description: '',
+                        ),
+                        MyTimeLineTile(
+                          isFirst: false,
+                          isLast: false,
+                          isActive: false,
+                          title: 'Random task',
+                          description: '',
+                        ),
+                        MyTimeLineTile(
+                          isFirst: false,
+                          isLast: true,
+                          isActive: false,
+                          title: '',
+                          description: '',
+                        ),
+                      ],
+                    ),
+                  )
                 ],
               ),
             ),
