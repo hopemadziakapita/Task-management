@@ -13,7 +13,7 @@ class RecentItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 8.0, top: 8, right: 20),
+      padding: const EdgeInsets.only(left: 8.0, top: 15, right: 20),
       child: Container(
         width: MediaQuery.of(context).size.width,
         decoration: const BoxDecoration(
