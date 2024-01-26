@@ -13,85 +13,90 @@ class _MyBottomSheetContentState extends State<MyBottomSheetContent> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      // height: 900,
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text("Title"),
-                TextField(
-                  decoration: InputDecoration(
-                    hintText: "Task Title",
-                    filled: true,
-                    fillColor: AppColors().secondaryColor,
-                    border: const OutlineInputBorder(
-                      borderSide: BorderSide.none,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(10),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text("Title"),
+                  TextField(
+                    decoration: InputDecoration(
+                      hintText: "Task Title",
+                      filled: true,
+                      fillColor: AppColors().secondaryColor,
+                      border: const OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(10),
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text("Creation Date"),
-                TextField(
-                  decoration: InputDecoration(
-                    hintText: "17 August 2023",
-                    filled: true,
-                    fillColor: AppColors().secondaryColor,
-                    border: const OutlineInputBorder(
-                      borderSide: BorderSide.none,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(10),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text("Creation Date"),
+                  TextField(
+                    decoration: InputDecoration(
+                      hintText: "17 August 2023",
+                      filled: true,
+                      fillColor: AppColors().secondaryColor,
+                      border: const OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(10),
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             Column(
               children: [
                 Row(
                   children: [
-                    Expanded(
+                    const Expanded(
                       child: Text("Start date"),
                     ),
-                    Expanded(
-                      child: DropdownButton<String>(
-                        underline: Container(),
-                        value: month, // Initial selected value
-                        items: <String>[
-                          'January',
-                          'February',
-                          'March',
-                          'April',
-                          'May',
-                          'June',
-                          'July',
-                          'August',
-                          'September',
-                          'October',
-                          'November',
-                          'December'
-                        ].map((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                        onChanged: (String? newValue) {
-                          setState(() {
-                            month = newValue!;
-                          });
-                        },
-                      ),
+                    DropdownButton<String>(
+                      underline: Container(),
+                      value: month, // Initial selected value
+                      items: <String>[
+                        'January',
+                        'February',
+                        'March',
+                        'April',
+                        'May',
+                        'June',
+                        'July',
+                        'August',
+                        'September',
+                        'October',
+                        'November',
+                        'December'
+                      ].map((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          month = newValue!;
+                        });
+                      },
                     ),
                   ],
                 ),
@@ -99,134 +104,60 @@ class _MyBottomSheetContentState extends State<MyBottomSheetContent> {
                   height: 80,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(5),
-                        child: Container(
-                          width: 40,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
+                    children: List.generate(
+                      7,
+                      (index) {
+                        DateTime currentDate = DateTime.now();
+                        DateTime date = currentDate.add(Duration(days: index));
+
+                        // Check if the date is the current date
+                        bool isCurrentDate = date.day == currentDate.day &&
+                            date.month == currentDate.month &&
+                            date.year == currentDate.year;
+
+                        return Padding(
+                          padding: const EdgeInsets.all(5),
+                          child: Container(
+                            width: 40,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: isCurrentDate
+                                  ? AppColors().primaryColor
+                                  : null, // Change color for the current date
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  getDayAbbreviation(date.weekday),
+                                  style: TextStyle(
+                                      color: isCurrentDate
+                                          ? Colors.white
+                                          : Colors.black),
+                                ),
+                                Text(
+                                  date.day.toString(),
+                                  style: TextStyle(
+                                    color: isCurrentDate
+                                        ? Colors.white
+                                        : null, // Change text color for the current date
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                          child: const Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text("Mon"),
-                              Text("10"),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(5),
-                        child: Container(
-                          width: 40,
-                          decoration: BoxDecoration(
-                            color: AppColors().primaryColor,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: const Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "Tue",
-                                style: TextStyle(color: Colors.white),
-                              ),
-                              Text(
-                                "10",
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(5),
-                        child: Container(
-                          width: 40,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: const Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "Wed",
-                              ),
-                              Text(
-                                "10",
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(5),
-                        child: Container(
-                          width: 40,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: const Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text("Thu"),
-                              Text("10"),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(5),
-                        child: Container(
-                          width: 40,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: const Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text("Fri"),
-                              Text("10"),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(5),
-                        child: Container(
-                          width: 40,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: const Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text("Sat"),
-                              Text("10"),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(5),
-                        child: Container(
-                          width: 40,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: const Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text("Sun"),
-                              Text("10"),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
+                        );
+                      },
+                    ),
                   ),
-                )
+                ),
               ],
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 5.0),
+              child: Row(
+                children: [Text("Get alert for this task")],
+              ),
             ),
             Container(
               width: MediaQuery.of(context).size.width,
@@ -246,5 +177,10 @@ class _MyBottomSheetContentState extends State<MyBottomSheetContent> {
         ),
       ),
     );
+  }
+
+  String getDayAbbreviation(int weekday) {
+    List<String> days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    return days[(weekday - 1) % 7]; // Adjusting for the zero-based index
   }
 }
