@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:interview/helpers/Colors.dart';
+import 'package:interview/widgets/RecentElement.dart';
 
 class Recents extends StatelessWidget {
   const Recents({super.key});
@@ -11,13 +11,13 @@ class Recents extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(
-            height: MediaQuery.of(context).size.height * .3,
+            height: MediaQuery.of(context).size.height * .25,
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
-                Container(
-                  width: 100,
-                  decoration: BoxDecoration(color: AppColors().primaryColor),
+                RecentElement(
+                  title: "User Interface Design",
+                  prog: 0.5,
                 )
               ],
             ),
