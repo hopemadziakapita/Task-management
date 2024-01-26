@@ -35,19 +35,19 @@ class Recents extends StatelessWidget {
             child: Column(
               children: [
                 RecentItem(
-                  title: "Wedding",
+                  title: "100 Days of Code",
                   date: "20 Aug 2022",
                 ),
                 RecentItem(
-                  title: "Wedding",
+                  title: "UX research",
                   date: "20 Aug 2022",
                 ),
                 RecentItem(
-                  title: "Wedding",
+                  title: "Epic redeems",
                   date: "20 Aug 2022",
                 ),
                 RecentItem(
-                  title: "Wedding",
+                  title: "Setup purchase",
                   date: "20 Aug 2022",
                 ),
               ],

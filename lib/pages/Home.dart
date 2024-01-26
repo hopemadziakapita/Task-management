@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:interview/helpers/Colors.dart';
 import 'package:interview/pages/Recents.dart';
+import 'package:interview/widgets/CustomAppBar.dart';
 import 'package:interview/widgets/FilterTabs.dart';
 
 class Home extends StatelessWidget {
@@ -11,16 +12,41 @@ class Home extends StatelessWidget {
     int index = 0;
     return Scaffold(
       backgroundColor: AppColors().bgColor,
+      appBar: const CustomAppBar(leadingIcon: Icons.segment),
+      bottomNavigationBar: SizedBox(
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              const Icon(Icons.home_outlined),
+              const Icon(Icons.calendar_month),
+              CircleAvatar(
+                radius: 30,
+                backgroundColor: AppColors().primaryColor,
+                child: const Icon(
+                  Icons.add,
+                  size: 40,
+                  color: Colors.white,
+                ),
+              ),
+              const Icon(Icons.description_outlined),
+              const Icon(Icons.person_2_outlined)
+            ],
+          ),
+        ),
+      ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 20.0),
+          padding: const EdgeInsets.symmetric(vertical: .0),
           child: SingleChildScrollView(
             child: SizedBox(
               height: MediaQuery.of(context).size.height,
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(20.0),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10.0, horizontal: 20),
                     child: Row(
                       children: [
                         Container(
