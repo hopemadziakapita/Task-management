@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:interview/helpers/Colors.dart';
+import 'package:interview/pages/Recents.dart';
 import 'package:interview/widgets/FilterTabs.dart';
 
 class Home extends StatelessWidget {
@@ -101,7 +102,7 @@ class Home extends StatelessWidget {
                       onPageChanged: (value) {
                         index = value;
                       },
-                      children: [Text("Recent"), Text("data")],
+                      children: [Recents(), Text("data")],
                     ),
                   )
                 ],
