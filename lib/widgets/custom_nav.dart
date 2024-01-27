@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:interview/helpers/colors.dart';
+import 'package:interview/helpers/app_colors.dart';
 import 'package:interview/pages/custom_modal.dart';
 
 class CustomNav extends StatelessWidget {
