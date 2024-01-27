@@ -12,7 +12,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.transparent,
-      leading: Icon(leadingIcon),
+      leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(leadingIcon)),
       actions: const [
         Padding(
           padding: EdgeInsets.all(8.0),

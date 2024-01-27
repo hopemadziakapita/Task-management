@@ -221,7 +221,7 @@ class _MyBottomSheetContentState extends State<MyBottomSheetContent> {
                 saveTasksToSharedPreferences(tasks).then(
                   (value) {
                     Navigator.pop(context);
-                    Navigator.push(
+                    Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                             builder: (context) => const DateTasks()));
