@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:interview/helpers/Colors.dart';
-import 'package:interview/helpers/Functions.dart';
+import 'package:interview/helpers/app_colors.dart';
+import 'package:interview/helpers/helper_functions.dart';
 import 'package:interview/models/task_model.dart';
-import 'package:interview/widgets/CustomAppBar.dart';
-import 'package:interview/widgets/CustomBottomNav.dart';
+import 'package:interview/widgets/custom_app_bar.dart';
+import 'package:interview/widgets/custom_nav.dart';
 import 'package:interview/widgets/my_timeline.dart';
 
 class DateTasks extends StatefulWidget {
@@ -16,18 +16,14 @@ class DateTasks extends StatefulWidget {
 class _DateTasksState extends State<DateTasks> {
   List tasks = [];
   int index = 0;
+
+  //initializing list
   @override
   void initState() {
-    getTasks();
+    getTasksFromSharedPreferences().then((value) => setState(() {
+          tasks = value;
+        }));
     super.initState();
-  }
-
-  Future<void> getTasks() async {
-    await getTasksFromSharedPreferences().then((value) {
-      setState(() {
-        tasks = value;
-      });
-    });
   }
 
   @override
@@ -116,6 +112,8 @@ class _DateTasksState extends State<DateTasks> {
                         ),
                       ),
                     ),
+
+                    //Displaying tasks in a list that returns  a custom timeline
                     Expanded(
                       child: ListView.builder(
                         itemCount: tasks.length,

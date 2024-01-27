@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:interview/helpers/Colors.dart';
+import 'package:interview/helpers/app_colors.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
 class MyTimeLineTile extends StatelessWidget {
@@ -59,35 +59,35 @@ class MyTimeLineTile extends StatelessWidget {
                   isActive ? MainAxisAlignment.start : MainAxisAlignment.end,
               children: [
                 isActive
-                    ? Row(
+                    ? const Row(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.all(4.0),
+                            padding: EdgeInsets.all(4.0),
                             child: CircleAvatar(
                               child: Icon(Icons.person),
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(4.0),
+                            padding: EdgeInsets.all(4.0),
                             child: CircleAvatar(
                               child: Icon(Icons.person),
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(4.0),
+                            padding: EdgeInsets.all(4.0),
                             child: CircleAvatar(
                               child: Icon(Icons.person),
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(4.0),
+                            padding: EdgeInsets.all(4.0),
                             child: CircleAvatar(
                               child: Icon(Icons.person),
                             ),
                           ),
                         ],
                       )
-                    : Icon(Icons.more_horiz)
+                    : const Icon(Icons.more_horiz)
               ],
             )
           ],
