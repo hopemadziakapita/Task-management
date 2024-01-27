@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:interview/helpers/Colors.dart';
 import 'package:interview/helpers/Functions.dart';
+import 'package:interview/models/task_model.dart';
+import 'package:interview/pages/DateTasks.dart';
 
 class MyBottomSheetContent extends StatefulWidget {
   const MyBottomSheetContent({super.key});
@@ -11,8 +13,13 @@ class MyBottomSheetContent extends StatefulWidget {
 }
 
 class _MyBottomSheetContentState extends State<MyBottomSheetContent> {
+  List<Task> tasks = [
+    DailyTask(DateTime.now(), "Design meeting",
+        "Design prototype for them iggas", false)
+  ];
   bool status5 = false;
   String month = "August";
+  String title = "";
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,6 +37,9 @@ class _MyBottomSheetContentState extends State<MyBottomSheetContent> {
                   children: [
                     const Text("Title"),
                     TextField(
+                      onChanged: (value) {
+                        title = value;
+                      },
                       decoration: InputDecoration(
                         hintText: "Task Title",
                         filled: true,
@@ -195,17 +205,32 @@ class _MyBottomSheetContentState extends State<MyBottomSheetContent> {
                   ],
                 ),
               ),
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: 50,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: AppColors().primaryColor,
-                ),
-                child: const Center(
-                  child: Text(
-                    "Create Task",
-                    style: TextStyle(color: Colors.white, fontSize: 18),
+              GestureDetector(
+                onTap: () async {
+                  setState(() {
+                    tasks.add(DailyTask(DateTime.now(), title, "", false));
+                  });
+
+                  await saveTasksToSharedPreferences(tasks)
+                      .then((value) => print(tasks));
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => DateTasks()));
+                },
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: AppColors().primaryColor,
+                  ),
+                  child: const Center(
+                    child: Text(
+                      "Create Task",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                      ),
+                    ),
                   ),
                 ),
               ),
