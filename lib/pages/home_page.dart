@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:interview/helpers/Colors.dart';
-import 'package:interview/pages/DateTasks.dart';
-import 'package:interview/pages/Recents.dart';
-import 'package:interview/widgets/CustomAppBar.dart';
-import 'package:interview/widgets/CustomBottomNav.dart';
-import 'package:interview/widgets/FilterTabs.dart';
+import 'package:interview/helpers/app_colors.dart';
+import 'package:interview/pages/date_tasks.dart';
+import 'package:interview/pages/recents_page.dart';
+import 'package:interview/widgets/custom_app_bar.dart';
+import 'package:interview/widgets/custom_nav.dart';
+import 'package:interview/widgets/filter_tabs.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -95,7 +95,7 @@ class Home extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => DateTasks()));
+                                      builder: (context) => const DateTasks()));
                             },
                             isActive: false),
                         FilterTab(
@@ -107,7 +107,7 @@ class Home extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Expanded(
+                  const Expanded(
                     child: Recents(),
                   )
                 ],

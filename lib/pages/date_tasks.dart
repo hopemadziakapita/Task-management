@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:interview/helpers/Colors.dart';
-import 'package:interview/helpers/Functions.dart';
+import 'package:interview/helpers/app_colors.dart';
+import 'package:interview/helpers/helper_functions.dart';
 import 'package:interview/models/task_model.dart';
-import 'package:interview/widgets/CustomAppBar.dart';
-import 'package:interview/widgets/CustomBottomNav.dart';
+import 'package:interview/widgets/custom_app_bar.dart';
+import 'package:interview/widgets/custom_nav.dart';
 import 'package:interview/widgets/my_timeline.dart';
 
 class DateTasks extends StatefulWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:interview/helpers/Colors.dart';
-import 'package:interview/pages/CustomModal.dart';
+import 'package:interview/helpers/colors.dart';
+import 'package:interview/pages/custom_modal.dart';
 
 class CustomNav extends StatelessWidget {
   const CustomNav({super.key});

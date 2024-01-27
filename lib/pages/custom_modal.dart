@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
-import 'package:interview/helpers/Colors.dart';
-import 'package:interview/helpers/Functions.dart';
+import 'package:interview/helpers/app_colors.dart';
+import 'package:interview/helpers/helper_functions.dart';
 import 'package:interview/models/task_model.dart';
-import 'package:interview/pages/DateTasks.dart';
+import 'package:interview/pages/date_tasks.dart';
 
 class MyBottomSheetContent extends StatefulWidget {
   const MyBottomSheetContent({super.key});

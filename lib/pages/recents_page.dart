@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:interview/widgets/RecentElement.dart';
-import 'package:interview/widgets/RecentItem.dart';
+import 'package:interview/widgets/recent_element.dart';
+import 'package:interview/widgets/recent_item.dart';
 
 class Recents extends StatelessWidget {
   const Recents({super.key});
