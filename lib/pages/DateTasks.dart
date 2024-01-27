@@ -122,7 +122,7 @@ class _DateTasksState extends State<DateTasks> {
                         itemBuilder: ((context, index) {
                           Task task = tasks[index];
                           return MyTimeLineTile(
-                            isFirst: false,
+                            isFirst: tasks[index] == 0 ? true : false,
                             isLast: false,
                             isActive: false,
                             title: task.title,

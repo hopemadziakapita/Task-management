@@ -13,13 +13,23 @@ class MyBottomSheetContent extends StatefulWidget {
 }
 
 class _MyBottomSheetContentState extends State<MyBottomSheetContent> {
-  List<Task> tasks = [
-    DailyTask(DateTime.now(), "Design meeting",
-        "Design prototype for them iggas", false)
-  ];
+  List<Task> tasks = [];
   bool status5 = false;
   String month = "August";
   String title = "";
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  Future<void> getTasks() async {
+    await getTasksFromSharedPreferences().then((value) {
+      setState(() {
+        tasks = value;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -206,15 +216,13 @@ class _MyBottomSheetContentState extends State<MyBottomSheetContent> {
                 ),
               ),
               GestureDetector(
-                onTap: () async {
+                onTap: () {
                   setState(() {
-                    tasks.add(DailyTask(DateTime.now(), title, "", false));
+                    tasks.add(
+                      DailyTask(DateTime.now(), title, "", false),
+                    );
                   });
-
-                  await saveTasksToSharedPreferences(tasks)
-                      .then((value) => print(tasks));
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => DateTasks()));
+                  saveStuff();
                 },
                 child: Container(
                   width: MediaQuery.of(context).size.width,
@@ -239,5 +247,15 @@ class _MyBottomSheetContentState extends State<MyBottomSheetContent> {
         ),
       ),
     );
+  }
+
+  Future<void> saveStuff() async {
+    await saveTasksToSharedPreferences(tasks).then((value) {
+      getTasks();
+      print(tasks);
+      // Navigator.pop(context);
+      // Navigator.push(
+      //     context, MaterialPageRoute(builder: (context) => DateTasks()));
+    });
   }
 }

@@ -71,7 +71,7 @@ Future<void> saveTasksToSharedPreferences(List<Task> tasks) async {
   await prefs.setStringList(taskKey, tasksJson);
 }
 
-Future<List> getTasksFromSharedPreferences() async {
+Future<List<Task>> getTasksFromSharedPreferences() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String taskKey = 'tasks_key';
 
