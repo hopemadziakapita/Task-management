@@ -16,18 +16,14 @@ class DateTasks extends StatefulWidget {
 class _DateTasksState extends State<DateTasks> {
   List tasks = [];
   int index = 0;
+
+  //initializing list
   @override
   void initState() {
-    getTasks();
+    getTasksFromSharedPreferences().then((value) => setState(() {
+          tasks = value;
+        }));
     super.initState();
-  }
-
-  Future<void> getTasks() async {
-    await getTasksFromSharedPreferences().then((value) {
-      setState(() {
-        tasks = value;
-      });
-    });
   }
 
   @override
@@ -116,6 +112,8 @@ class _DateTasksState extends State<DateTasks> {
                         ),
                       ),
                     ),
+
+                    //Displaying tasks in a list that returns  a custom timeline
                     Expanded(
                       child: ListView.builder(
                         itemCount: tasks.length,
