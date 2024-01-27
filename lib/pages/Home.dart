@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:interview/helpers/Colors.dart';
-import 'package:interview/pages/CustomModal.dart';
 import 'package:interview/pages/DateTasks.dart';
 import 'package:interview/pages/Recents.dart';
 import 'package:interview/widgets/CustomAppBar.dart';
@@ -12,11 +11,10 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int index = 0;
     return Scaffold(
       backgroundColor: AppColors().bgColor,
       appBar: const CustomAppBar(leadingIcon: Icons.segment),
-      bottomNavigationBar: CustomNav(),
+      bottomNavigationBar: const CustomNav(),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: .0),

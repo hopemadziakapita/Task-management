@@ -29,7 +29,7 @@ class _FilterTabState extends State<FilterTab> {
                   color: AppColors().primaryColor, fontWeight: FontWeight.w400)
               : const TextStyle(
                   fontWeight: FontWeight.w400,
-                  color: Colors.black12,
+                  color: Colors.black,
                   fontSize: 12),
         ),
       ),

@@ -53,7 +53,7 @@ class _MyBottomSheetContentState extends State<MyBottomSheetContent> {
                     const Text("Creation Date"),
                     TextField(
                       decoration: InputDecoration(
-                        hintText: "17 August 2023",
+                        hintText: "26 August 2023",
                         filled: true,
                         fillColor: AppColors().secondaryColor,
                         border: const OutlineInputBorder(

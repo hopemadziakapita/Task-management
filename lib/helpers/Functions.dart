@@ -34,14 +34,55 @@ String taskToJson(Task task) {
   return jsonEncode(taskMap);
 }
 
+//converting JSON to object
+Task taskFromJson(String json) {
+  Map<String, dynamic> taskMap = jsonDecode(json);
+
+  if (taskMap['prog'] != null && taskMap['duration'] != null) {
+    // If 'prog' and 'duration' keys are present, it's a Journey
+    return Journey(
+      DateTime.parse(taskMap['date']),
+      taskMap['title'],
+      taskMap['description'],
+      taskMap['isDone'],
+      taskMap['prog'],
+      taskMap['duration'],
+    );
+  } else {
+    // Otherwise, it's a DailyTask
+    return DailyTask(
+      DateTime.parse(taskMap['date']),
+      taskMap['title'],
+      taskMap['description'],
+      taskMap['isDone'],
+    );
+  }
+}
+
 //Saving the serialized task object to sharedpreferences
-Future<void> saveTaskToSharedPreferences(Task task) async {
+Future<void> saveTasksToSharedPreferences(List<Task> tasks) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  String taskKey = 'task_key';
+  String taskKey = 'tasks_key';
 
-  // Serialize the task to JSON
-  String taskJson = taskToJson(task);
+  // Serialize the list of tasks to a list of JSON strings
+  List<String> tasksJson = tasks.map((task) => taskToJson(task)).toList();
 
-  // Save the JSON string to SharedPreferences
-  await prefs.setString(taskKey, taskJson);
+  // Save the list of JSON strings to SharedPreferences
+  await prefs.setStringList(taskKey, tasksJson);
+}
+
+Future<List> getTasksFromSharedPreferences() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String taskKey = 'tasks_key';
+
+  // Retrieve the list of JSON strings from SharedPreferences
+  List<String>? tasksJson = prefs.getStringList(taskKey);
+
+  // If tasksJson is null or empty, return an empty list
+  if (tasksJson == null || tasksJson.isEmpty) {
+    return [];
+  }
+
+  // Deserialize each JSON string to a Task object and return the list
+  return tasksJson.map((json) => taskFromJson(json)).toList();
 }

@@ -23,7 +23,7 @@ class CustomNav extends StatelessWidget {
                 showModalBottomSheet(
                   context: context,
                   builder: (BuildContext context) {
-                    return MyBottomSheetContent();
+                    return const MyBottomSheetContent();
                   },
                 );
               },
