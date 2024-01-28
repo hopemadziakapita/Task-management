@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:interview/helpers/database_helper.dart';
 import 'package:interview/models/task_model.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -41,21 +42,17 @@ Task taskFromJson(String json) {
   if (taskMap['prog'] != null && taskMap['duration'] != null) {
     // If 'prog' and 'duration' keys are present, it's a Journey
     return Journey(
-      DateTime.parse(taskMap['date']),
-      taskMap['title'],
-      taskMap['description'],
-      taskMap['isDone'],
-      taskMap['prog'],
-      taskMap['duration'],
-    );
+        DateTime.parse(taskMap['date']),
+        taskMap['title'],
+        taskMap['description'],
+        taskMap['isDone'],
+        taskMap['prog'],
+        taskMap['duration'],
+        taskMap['id']);
   } else {
     // Otherwise, it's a DailyTask
-    return DailyTask(
-      DateTime.parse(taskMap['date']),
-      taskMap['title'],
-      taskMap['description'],
-      taskMap['isDone'],
-    );
+    return DailyTask(DateTime.parse(taskMap['date']), taskMap['title'],
+        taskMap['description'], taskMap['isDone'], taskMap['id']);
   }
 }
 
@@ -69,6 +66,9 @@ Future<void> saveTasksToSharedPreferences(List<Task> tasks) async {
 
   // Save the list of JSON strings to SharedPreferences
   await prefs.setStringList(taskKey, tasksJson);
+  tasks.forEach((element) {
+    DatabaseHelper().insertTask(element);
+  });
 }
 
 Future<List<Task>> getTasksFromSharedPreferences() async {
