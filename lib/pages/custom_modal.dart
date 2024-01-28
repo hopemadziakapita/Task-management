@@ -215,7 +215,7 @@ class _MyBottomSheetContentState extends State<MyBottomSheetContent> {
               onTap: () {
                 setState(() {
                   tasks.add(
-                    DailyTask(DateTime.now(), title, "", false),
+                    DailyTask(DateTime.now(), title, "", false, 4),
                   );
                 });
                 saveTasksToSharedPreferences(tasks).then(

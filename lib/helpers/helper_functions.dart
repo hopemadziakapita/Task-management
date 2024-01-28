@@ -41,21 +41,17 @@ Task taskFromJson(String json) {
   if (taskMap['prog'] != null && taskMap['duration'] != null) {
     // If 'prog' and 'duration' keys are present, it's a Journey
     return Journey(
-      DateTime.parse(taskMap['date']),
-      taskMap['title'],
-      taskMap['description'],
-      taskMap['isDone'],
-      taskMap['prog'],
-      taskMap['duration'],
-    );
+        DateTime.parse(taskMap['date']),
+        taskMap['title'],
+        taskMap['description'],
+        taskMap['isDone'],
+        taskMap['prog'],
+        taskMap['duration'],
+        taskMap['id']);
   } else {
     // Otherwise, it's a DailyTask
-    return DailyTask(
-      DateTime.parse(taskMap['date']),
-      taskMap['title'],
-      taskMap['description'],
-      taskMap['isDone'],
-    );
+    return DailyTask(DateTime.parse(taskMap['date']), taskMap['title'],
+        taskMap['description'], taskMap['isDone'], taskMap['id']);
   }
 }
 

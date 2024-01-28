@@ -38,6 +38,7 @@ dependencies:
   flutter_switch: ^0.3.2
   intl: ^0.17.0
   timeline_tile: ^2.0.0
+  sqflite: ^2.0.0
 
 dev_dependencies:
   flutter_test:
