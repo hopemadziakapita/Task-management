@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:interview/helpers/app_colors.dart';
@@ -215,7 +217,8 @@ class _MyBottomSheetContentState extends State<MyBottomSheetContent> {
               onTap: () {
                 setState(() {
                   tasks.add(
-                    DailyTask(DateTime.now(), title, "", false, 4),
+                    DailyTask(DateTime.now(), title, "", false,
+                        Random().nextInt(1000)),
                   );
                 });
                 saveTasksToSharedPreferences(tasks).then(
