@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:interview/helpers/database_helper.dart';
 import 'package:interview/models/task_model.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -65,6 +66,9 @@ Future<void> saveTasksToSharedPreferences(List<Task> tasks) async {
 
   // Save the list of JSON strings to SharedPreferences
   await prefs.setStringList(taskKey, tasksJson);
+  tasks.forEach((element) {
+    DatabaseHelper().insertTask(element);
+  });
 }
 
 Future<List<Task>> getTasksFromSharedPreferences() async {
