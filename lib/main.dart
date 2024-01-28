@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:interview/helpers/database_helper.dart';
 import 'package:interview/pages/home_page.dart';
+import 'package:path/path.dart';
+import 'package:sqflite/sqflite.dart';
 
-void main() {
+void main() async {
+  // Initialize the database before runApp
+  WidgetsFlutterBinding.ensureInitialized();
+  await DatabaseHelper().initDatabase();
+
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

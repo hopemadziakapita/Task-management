@@ -23,12 +23,12 @@ class DatabaseHelper {
       return _database!;
     }
 
-    _database = await _initDatabase();
+    _database = await initDatabase();
     return _database!;
   }
 
   // Initialize the database
-  Future<Database> _initDatabase() async {
+  Future<Database> initDatabase() async {
     String path = join(await getDatabasesPath(), _databaseName);
     return await openDatabase(path,
         version: _databaseVersion, onCreate: _onCreate);
@@ -55,14 +55,17 @@ class DatabaseHelper {
   Future<List<Task>> getTasks() async {
     Database db = await database;
     List<Map<String, dynamic>> maps = await db.query('tasks');
-    return List.generate(maps.length, (index) {
-      return Task(
-        DateTime.parse(maps[index]['date']),
-        maps[index]['title'],
-        maps[index]['description'],
-        maps[index]['isDone'] == true,
-        maps[index]['id'],
-      );
-    });
+    return List.generate(
+      maps.length,
+      (index) {
+        return Task(
+          DateTime.parse(maps[index]['date']),
+          maps[index]['title'],
+          maps[index]['description'],
+          maps[index]['isDone'] == true,
+          maps[index]['id'],
+        );
+      },
+    );
   }
 }
