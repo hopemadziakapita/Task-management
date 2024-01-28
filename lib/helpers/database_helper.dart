@@ -49,6 +49,7 @@ class DatabaseHelper {
 
   Future<int> insertTask(Task task) async {
     Database db = await database;
+    print("Ïnserted Task");
     return await db.insert('tasks', task.toMap());
   }
 
